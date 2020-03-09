@@ -3,6 +3,8 @@ function Start() {
     $("#Login").hide()
     $("#dashboard").hide()
     $("#creates").hide()
+    $("#RegisterButton").show()
+
     emptyTable()
 }
 
@@ -18,6 +20,7 @@ function LoginSuccess() {
     $("#LoginButton").hide()
     $("#googlelogin").hide()
     $("#LogoutButton").show()
+    $("#RegisterButton").hide()
 
 
 }
@@ -59,6 +62,8 @@ function LogoutButton() {
         $("#LoginButton").show()
         $("#googlelogin").show()
         $("#LogoutButton").hide()
+        $("#RegisterButton").show()
+
 
         emptyTable()
         localStorage.removeItem('access_token')
@@ -87,6 +92,22 @@ function UpdateData(CurrentId) {
                 $("#Message").empty()
             }, 3000);
             console.log(result)
+            $("#updates").empty()
+            $("#updates").append(`<h1>Update Todos</h1>
+            <h3 id="UpdateError"></h3>
+            <form id=Update-Form>
+                Title:<br>
+                <input type="text" id="UpdateTitle"><br>
+                Description:<br>
+                <input type="text" id="UpdateDesc"><br>
+                Status:<br>
+                <input type="radio" id="UpdateStatus" name="status" value="true">True
+                <input type="radio" id="UpdateStatus" name="status" value="false">False<br>
+                Due Date:<br>
+                <input type="date" id="UpdateDate" ><br>
+                <input type="submit">
+            </form>`)
+
             $("#updates").hide()
             emptyTable()
             AjaxDashboard()

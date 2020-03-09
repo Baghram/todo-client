@@ -14,9 +14,15 @@ function onSignIn(googleUser) {
     .done(function(result) {
         console.log(result)
         localStorage.setItem("access_token", result.access_token)
+        let isLogin = localStorage.getItem('access_token') 
         if(isLogin) {
+        LoginSuccess()
         $("#dashboard").show()
         AjaxDashboard()
+        $("#Message").append(`Welcome ${result.payloads.Email}`)
+            setTimeout(() => {
+                $("#Message").empty()
+            }, 3000);
     }
     })
     .fail(function(err) {
